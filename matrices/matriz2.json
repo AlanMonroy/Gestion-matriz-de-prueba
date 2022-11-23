@@ -1,0 +1,20 @@
+[
+       {
+              "id": 1,
+              "NOMBRE": "1",
+              "DESCRIPCION": "1",
+              "RESULTADO_GENERAL": "",
+              "PASOS": [],
+              "RESULTADO": []
+       },
+       {
+              "id": 2,
+              "NOMBRE": "2",
+              "DESCRIPCION": "2",
+              "RESULTADO_GENERAL": "",
+              "PASOS": [
+                     "2"
+              ],
+              "RESULTADO": []
+       }
+]

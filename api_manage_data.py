@@ -3,43 +3,63 @@ import pandas as pd
 from tkinter import filedialog,messagebox
 import openpyxl
 from openpyxl.styles import Alignment
+import os
 
 class Manage:
-	def set_json(self):
-		data = list()
-		data.append({"id": 1,
-		"NOMBRE": "Obtener selloxxo pagando con dinero 'coalición'",
-		"DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando con dinero 'coalición'",
-		"PASOS": ["PASO1.1","PASO1.2","PASO1.3"]}
-		)
-
-		data.append({"id": 2,
-		"NOMBRE": "Obtener selloxxo pagando con efectivo",
-		"DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando en efectivo",
-		"PASOS": ["PASO2.1","PASO2.2","PASO2.3"]}
-		)
-
-		data.append({"id": 3,
-		"NOMBRE": "Obtener selloxxo pagando con tarjeta debito",
-		"DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando con tarjeta de debito",
-		"PASOS": ["PASO3.1","PASO3.2","PASO3.3"]}
-		)
+	# CREAR ARCHIVO DONDE SE GUARDA LA CONFIGURACION #
+	def crear_archivo_configuracion(self):
+		data = {"MEMORIA_ARCHIVO_JSON": ''}
 		
-		with open("data.json","w", encoding="UTF-8") as file:
+		with open('CONFIGURACION.json',"w", encoding="UTF-8") as file:
 			json.dump(data,file, indent=7)
 
-	def get_info_json(self):
+	def crear_json_matriz(self,nombre_archivo):
+		data = {}
 		try:
-			with open('data.json','r',encoding="UTF-8") as archivo:
+			with open(f'matrices/{nombre_archivo}.json',"w", encoding="UTF-8") as file:
+				json.dump(data,file, indent=7)
+		except Exception as e:
+			os.mkdir('matrices')
+
+		with open(f'matrices/{nombre_archivo}.json',"w", encoding="UTF-8") as file:
+			json.dump(data,file, indent=7)
+
+	def memoria_archivo_json(self):
+		try:
+			with open('CONFIGURACION.json','r',encoding="UTF-8") as archivo:
+				data = json.load(archivo)
+				if data['MEMORIA_ARCHIVO_JSON']:
+					return data['MEMORIA_ARCHIVO_JSON']
+		except Exception as e:
+			pass
+
+	def memoria_guardar_archivo_json(self,archivo_json):
+		if archivo_json != '':
+			try:
+				with open('CONFIGURACION.json','r',encoding="UTF-8") as archivo:
+					data = json.load(archivo)	
+				
+				data['MEMORIA_ARCHIVO_JSON'] = archivo_json
+
+				with open('CONFIGURACION.json',"w", encoding="UTF-8") as file:
+					json.dump(data,file, indent=7)
+
+			except Exception as e:
+				pass
+
+	def get_info_json(self):
+		archivo_json = self.memoria_archivo_json()
+		try:
+			with open(archivo_json,'r',encoding="UTF-8") as archivo:
 				data = json.load(archivo)
 				return data
 		except Exception as e:
 			print(e)
-			return False
 
 	def buscar_dato_json(self,identificador):
+		archivo_json = self.memoria_archivo_json()
 		try:
-			with open('data.json','r',encoding="UTF-8") as archivo:
+			with open(archivo_json,'r',encoding="UTF-8") as archivo:
 				data = json.load(archivo)
 			
 			for i in data:
@@ -50,8 +70,9 @@ class Manage:
 			return False
 
 	def guardar_datos_json(self,diccionario):
+		archivo_json = self.memoria_archivo_json()
 		try:
-			with open('data.json','r',encoding="UTF-8") as archivo:
+			with open(archivo_json,'r',encoding="UTF-8") as archivo:
 				data = json.load(archivo)
 			nueva_info = list()
 			identificador = 0
@@ -61,6 +82,8 @@ class Manage:
 				identificador = i['id']
 
 			descripcion = diccionario['descripcion'].replace('\n','')
+			resultado_general = diccionario['resultado_general'].replace('\n','')
+			# SEPARAR PASOS #
 			paso = list() ; lista_pasos = list()
 			for x in diccionario['pasos']:
 				if x == '\n':
@@ -71,13 +94,26 @@ class Manage:
 				else:
 					paso.append(x)
 
+			# SEPARAR RESULTADOS #
+			resultado = list() ; lista_resultado = list()
+			for x in diccionario['resultado']:
+				if x == '\n':
+					agregar_resultado = "".join(resultado)
+					if agregar_resultado != "":
+						lista_resultado.append(agregar_resultado)
+					resultado.clear()
+				else:
+					resultado.append(x)
+
 			identificador += 1
 			nueva_info.append({"id": identificador ,
 				"NOMBRE": diccionario['nombre'],
 				"DESCRIPCION": descripcion,
-				"PASOS": lista_pasos})
+				"RESULTADO_GENERAL":resultado_general,
+				"PASOS": lista_pasos,
+				"RESULTADO": lista_resultado})
 
-			with open("data.json","w", encoding="UTF-8") as file:
+			with open(archivo_json,"w", encoding="UTF-8") as file:
 				json.dump(nueva_info,file, indent=7)
 
 		except Exception as e:
@@ -85,8 +121,9 @@ class Manage:
 			return False
 
 	def actualizar_datos_json(self,diccionario):
+		archivo_json = self.memoria_archivo_json()
 		try:
-			with open('data.json','r',encoding="UTF-8") as archivo:
+			with open(archivo_json,'r',encoding="UTF-8") as archivo:
 				data = json.load(archivo)
 			nueva_info = list()
 
@@ -95,7 +132,10 @@ class Manage:
 					nueva_info.append(i)
 				else:
 					descripcion = diccionario['descripcion'].replace('\n','')
+					resultado_general = diccionario['resultado_general'].replace('\n','')
+
 					#pasos_unidos = diccionario['pasos'].replace('\n','')
+					# SEPARAR PASOS #
 					paso = list() ; lista_pasos = list()
 					for x in diccionario['pasos']:
 						if x == '\n':
@@ -106,21 +146,35 @@ class Manage:
 						else:
 							paso.append(x)
 
+					# SEPARAR RESULTADOS #
+					resultado = list() ; lista_resultados = list()
+					for x in diccionario['resultado']:
+						if x == '\n':
+							agregar_resultado = "".join(resultado)
+							if agregar_resultado != "":
+								lista_resultados.append(agregar_resultado)
+							resultado.clear()
+						else:
+							resultado.append(x)
+
 					nueva_info.append({"id": int(diccionario['identificador']),
 						"NOMBRE": diccionario['nombre'],
 						"DESCRIPCION": descripcion,
-						"PASOS": lista_pasos})
+						"RESULTADO_GENERAL": resultado_general,
+						"PASOS": lista_pasos,
+						"RESULTADO": lista_resultados})
 
-			with open("data.json","w", encoding="UTF-8") as file:
+			with open(archivo_json,"w", encoding="UTF-8") as file:
 				json.dump(nueva_info,file, indent=7)
 
 		except Exception as e:
 			print(e)
 			return False
 
-	def eliminar_dato(self, identificador):
+	def eliminar_dato(self,identificador):
+		archivo_json = self.memoria_archivo_json()
 		try:
-			with open('data.json','r',encoding="UTF-8") as archivo:
+			with open(archivo_json,'r',encoding="UTF-8") as archivo:
 				data = json.load(archivo)
 			nueva_info = list()
 
@@ -128,7 +182,7 @@ class Manage:
 				if i['id'] != identificador:	# Mientras sea diferente al valor buscado o seguira agregando, si es diferente simplemente no lo agregara (eliminacion) 
 					nueva_info.append(i)
 
-			with open("data.json","w", encoding="UTF-8") as file:
+			with open(archivo_json,"w", encoding="UTF-8") as file:
 				json.dump(nueva_info,file, indent=7)
 
 		except Exception as e:
@@ -136,14 +190,15 @@ class Manage:
 			return False
 
 	def exportar_excel(self):
+		archivo_json = self.memoria_archivo_json()
 		data_null={}
 		df_null = pd.DataFrame(data_null)
-		a = filedialog.asksaveasfilename(title="Abrir", initialdir = "C:/",filetypes = [("Archivo excel","*.xlsx")])
+		a = filedialog.asksaveasfilename(title="Guardar", initialdir = "C:/",filetypes = [("Archivo excel","*.xlsx")])
 
 		if a != "":
-			df_vacio = pd.DataFrame(columns=["Id caso de prueba","Caso de prueba","Descripción","Pre-requisitos","Datos de prueba","No.paso","Descripción del paso"])
+			df_vacio = pd.DataFrame(columns=["Id caso de prueba","Caso de prueba","Descripción","Pre-requisitos","Resultado general","No.paso","Descripción del paso"])
 			try:
-				with open('data.json','r',encoding="UTF-8") as archivo:
+				with open(archivo_json,'r',encoding="UTF-8") as archivo:
 					data = json.load(archivo)
 			except Exception as e:
 				print(e)
@@ -156,11 +211,13 @@ class Manage:
 					if validar_primer_paso == 0:
 						validar_primer_paso += 1
 						#FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.df_vacio = df_vacio.append({"Id caso de prueba": "" ,
+						print(i['id'])
 						df_vacio = df_vacio.append({"Id caso de prueba": "CP"+ str(i['id']),
 										"Caso de prueba":i['NOMBRE'],
 										"Descripción": i['DESCRIPCION'],
 										"Pre-requisitos": "",
-										"Datos de prueba": "",
+										"Resultado esperado": i['RESULTADO_GENERAL'],
+										#"Datos de prueba": "",
 										"No.paso": validar_primer_paso,
 										"Descripción del paso": x,}, ignore_index=True)
 					else:
@@ -169,7 +226,8 @@ class Manage:
 										"Caso de prueba": "",
 										"Descripción": "" ,
 										"Pre-requisitos": "" ,
-										"Datos de prueba": "" ,
+										"Resultado esperado": "" ,
+										#"Datos de prueba": "" ,
 										"No.paso": validar_primer_paso,
 										"Descripción del paso": x,}, ignore_index=True)
 
@@ -178,11 +236,14 @@ class Manage:
 			#Darle formato al excel
 			wb = openpyxl.load_workbook(f"{a}.xlsx") 
 			sheet = wb.active 
+
 			#Tamaño a las columnas
 			sheet.column_dimensions['A'].width = 20
 			sheet.column_dimensions['B'].width = 50
 			sheet.column_dimensions['C'].width = 50
 			sheet.column_dimensions['D'].width = 20
+			sheet.column_dimensions['E'].width = 50
+			sheet.column_dimensions['F'].width = 20
 			sheet.column_dimensions['G'].width = 50
 			for row in sheet:
 			  for cell in row:
@@ -191,12 +252,14 @@ class Manage:
 			messagebox.showinfo("Completado","Excel creado.")
 
 	def guardar_reacomodo(self,datos):
-		with open("data.json","w", encoding="UTF-8") as file:
+		archivo_json = self.memoria_archivo_json()
+		with open(archivo_json,"w", encoding="UTF-8") as file:
 			json.dump(datos,file, indent=7)
 
-	def buscar(self, valor_busqueda):
+	def buscar(self,valor_busqueda):
+		archivo_json = self.memoria_archivo_json()
 		try:
-			with open('data.json','r',encoding="UTF-8") as archivo:
+			with open(archivo_json,'r',encoding="UTF-8") as archivo:
 				info = json.load(archivo)
 
 			info1=[]
@@ -232,8 +295,31 @@ class Manage:
 			print(e)
 			return False
 
+	def crear_word(self,identificador):
+		archivo_json = self.memoria_archivo_json()
+		self.ruta_imagenes = filedialog.askdirectory()
+		if self.ruta_imagenes != '':
+			print(self.ruta_imagenes)
+			a = filedialog.asksaveasfilename(title="Guardar", initialdir = "C:/",filetypes = [("Archivo word","*.docx")])
+
+			if a != "":
+				try:
+					with open(archivo_json,'r',encoding="UTF-8") as archivo:
+						data = json.load(archivo)
+					
+					for i in data:
+						if i['id'] == int(identificador):
+							caso_documentar = i
+							break
+
+					print("terminado")
+				except Exception as e:
+					return False
+
 if __name__ == '__main__':
 	llamar_manage = Manage()
+	#llamar_manage.crear_json_matriz('archivo')
+	#print(llamar_manage.memoria_archivo_json())
 	#x=llamar_manage.set_json()
 	#e=llamar_manage.buscar_dato_json(1)
 	#print(e)

@@ -3,6 +3,7 @@
               "id": 1,
               "NOMBRE": "Obtener selloxxo pagando con dinero 'coalici\u00f3n'",
               "DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando con dinero 'coalici\u00f3n'",
+              "RESULTADO_GENERAL": "Se muestra en ticket el aumento de producto en el selloxxo usando dinero 'coalici\u00f3n'",
               "PASOS": [
                      "Ingresar a XPOS",
                      "Agregar al journal productos para completar un selloxxo",
@@ -12,12 +13,14 @@
                      "Pagar con dinero 'coalici\u00f3n'",
                      "Validar en ticket que se halla obtenido el selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 2,
               "NOMBRE": "Obtener selloxxo pagando con efectivo",
               "DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando en efectivo",
+              "RESULTADO_GENERAL": "Se habilita un selloxxo para reclamarlo posteriormente en el ticket",
               "PASOS": [
                      "Ingresar a XPOS",
                      "Agregar la journal productos para completar un selloxxo",
@@ -27,12 +30,14 @@
                      "Pagar con efectivo",
                      "Validar en ticket que se halla obtenido el selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 3,
               "NOMBRE": "Obtener selloxxo pagando con tarjeta d\u00e9bito",
               "DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando con tarjeta de d\u00e9bito",
+              "RESULTADO_GENERAL": "Se habilita un selloxxo para reclamarlo posteriormente en el ticket",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos para completar un selloxxo",
@@ -42,12 +47,14 @@
                      "Pagar con tarjeta de d\u00e9bito",
                      "Validar en ticket que sde halla obtenido el selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 4,
               "NOMBRE": "Obtener selloxxo pagando con tarjeta cr\u00e9dito",
               "DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando con tarjeta de cr\u00e9dito",
+              "RESULTADO_GENERAL": "Se habilita un selloxxo para reclamarlo posteriormente en el ticket",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos para completar un selloxxo",
@@ -57,12 +64,14 @@
                      "Pagar con tarjeta de cr\u00e9dito",
                      "Validar en ticket que se halla obtenido el selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 5,
               "NOMBRE": "Obtener selloxxo pagando con vales",
               "DESCRIPCION": "Realizar las compras de productos para obtener selloxxo pagando con vales",
+              "RESULTADO_GENERAL": "Se habilita un selloxxo para reclamarlo posteriormente en el ticket.",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos para completar un selloxxo",
@@ -72,335 +81,365 @@
                      "Pagar con vales",
                      "Validar en ticket que se halla obtenido el selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
+              ],
+              "RESULTADO": [
+                     "Resultado1",
+                     "Resultado2",
+                     "Resultado3"
               ]
        },
        {
               "id": 6,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n pagando con dinero 'coalici\u00f3n'",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con dinero 'coalici\u00f3n'",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos pagando con la dinero 'coalici\u00f3n'",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'Coalici\u00f3n' y dar a 'SI'",
                      "Pagar con dinero 'coalici\u00f3n'",
                      "Validar en ticjet que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 7,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n pagando en efectivo",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando en efectivo",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos pagando con dinero en efectivo",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar productos gratis del selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar en efectivo",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 8,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n pagando con tarjeta de cr\u00e9dito",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con tarjeta de cr\u00e9dito",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos pagando con tarjeta de cr\u00e9dito",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para un acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara una pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar con tarjeta de cr\u00e9dito",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 9,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n pagando con tarjeta de d\u00e9bito",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con tarjeta de d\u00e9bito",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos pagando con tarjeta de d\u00e9bito",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en automatico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar con tarjeta de d\u00e9bito",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 10,
               "NOMBRE": "Redimir selloxxos y acumulaci\u00f3n pagando con vales",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con vales",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos pagando con vales",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en automatico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar con vales",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 11,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n con pago mixto (dinero 'coalici\u00f3n' y efectivo)",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con dinero 'coalici\u00f3n' y efectivo",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos con pago mixto (dinero 'coalici\u00f3n' y efectivo)",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'SI'",
                      "Pagar parcialmente con dinero 'coalici\u00f3n' y el resto en efectivo",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 12,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n con pago mixto (dinero 'coalici\u00f3n' y tarjeta)",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con dinero 'coalici\u00f3n' y tarjeta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos con pago mixto (dinero 'coalici\u00f3n' y tarjeta)",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'SI'",
                      "Pagar parcialmente con dinero 'coalici\u00f3n' y el resto con tarjeta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 13,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n con pago mixto (dinero 'coalici\u00f3n' y vales)",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con dinero 'coalici\u00f3n' y vales",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos con pago mixto (dinero 'coalici\u00f3n' y vales)",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'SI'",
                      "Pagar parcialmente con dinero coalici\u00f3n y el resto con vales",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 14,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n con pago mixto (efectivo y vales)",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con efectivo y vales",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos con pago mixto (efectivo y vales)",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar parcialmente con efectivo y el resto con vales",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el  nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 15,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n con pago mixto (tarjeta de cr\u00e9dito y vales) ",
               "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con tarjeta de cr\u00e9dito y vales",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos con pago mixto (tarjeta de cr\u00e9dito y vales)",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar parcialmente con vales y el resto con tarjeta de cr\u00e9dito",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 16,
               "NOMBRE": "Redimir selloxxo y acumulaci\u00f3n con pago mixto (tarjeta d\u00e9bito y vales)",
-              "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con tarjeta y vales",
+              "DESCRIPCION": "Realizar una redenci\u00f3n de un selloxxo junto a una acumulaci\u00f3n pagando con tarjeta  de d\u00e9bito y vales",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis y se acmulan puntos con pago mixto (tarjeta de d\u00e9bito y vales)",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal productos de selloxxo habilitado y productos para una acumulaci\u00f3n en la misma venta",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Pagar parcialmente con vales y el resto con tarjeta de d\u00e9bito",
                      "Validar en el ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 17,
               "NOMBRE": "Redimir selloxxo solo",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis en autom\u00e1tico solamente",
+              "RESULTADO_GENERAL": "Se otorga el productos gratis del selloxxo consumido",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que s ehalla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 18,
               "NOMBRE": "Redimir selloxxo junto a un pago sky en linea",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis y un pago sky en linea en la misma venta",
+              "RESULTADO_GENERAL": "Se completa la venta de un producto gratis de selloxxo y un pago sky",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
                      "Se otorgara el selloxxo en autom\u00e1tico",
-                     "Agregar un pago sky en linea al journal",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 19,
-              "NOMBRE": "Redimir selloxxo junto a una Giftcard",
+              "NOMBRE": " ++ Redimir selloxxo junto a una Giftcard",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis y una griftcard en la misma venta",
+              "RESULTADO_GENERAL": "Se obtiene el producto gratis de selloxxo y la giftcard",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorga el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agrega una giftcard al journal",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
               "id": 20,
-              "NOMBRE": "Redimir selloxxo junto a prepago tarjeta feria",
-              "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis y un prepago de tarjeta feria en la misma venta",
-              "PASOS": [
-                     "Ingresar a Xpos",
-                     "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgar\u00e1 el selloxxo en autom\u00e1tico",
-                     "Agregar al journal un prepago tarjeta feria",
-                     "Presionar <Subtotalizar>",
-                     "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
-                     "Completar venta",
-                     "Validar en ticket que se halla resteado el selloxxo.",
-                     "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
-       },
-       {
-              "id": 21,
               "NOMBRE": "Redimir selloxxo junto a envio de dinero",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis y envio de dinero en la misma venta",
+              "RESULTADO_GENERAL": "Se consume el producto gratis de selloxxo y se realiza el envio de dinero mostrandose en ticket",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el selloxxo gratis",
                      "Realizar un envio de dinero en la misma venta",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 22,
+              "id": 21,
               "NOMBRE": "Redimir selloxxo junto a un dep\u00f3sito (corresponsalia)",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis y un dep\u00f3sito en la misma venta",
+              "RESULTADO_GENERAL": "Se consume el producto gratis de selloxxo y se realiza el dep\u00f3sito mostrandose en ticket",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Realizar un dep\u00f3sito en la misma venta",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos ",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 23,
+              "id": 22,
               "NOMBRE": "Redimir selloxxo junto a un retiro de efectivo",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis y realizar un retiro de efectivo en la misma venta",
+              "RESULTADO_GENERAL": "Se consume el producto gratis de selloxxo y se completa un retiro de efectivo mostrandoce en ticket las transacciones",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Realizar en un retiro de efectivo en la misma venta",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 24,
+              "id": 23,
               "NOMBRE": "Redimir selloxxo junto a recarga TAE",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis junto a recarga TAE en la misma venta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo y cobra una recarga TAE",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Realizar una recarga TAE",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 25,
+              "id": 24,
               "NOMBRE": "Redimir selloxxo junto a boletos de cine",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis junto a boletos de cine en la misma venta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo y boletos de cine en la misma venta",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar boletos de cine en la misma venta",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 26,
+              "id": 25,
               "NOMBRE": "Redimir selloxxo junto a boletos de autobuses",
               "DESCRIPCION": "Validar que otorgue un producto selloxxo gratis junto a bolestos de autobus en la misma venta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo y compra de boletos de autobus en la misma venta",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar boletos de autobus en la misma venta",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 27,
+              "id": 26,
               "NOMBRE": "Redimir selloxxo junto a bebidas alcoholicas",
-              "DESCRIPCION": "Validar la obtenci\u00f3n de un producto selloxxo gratuito junto al correcto funcionamiento de una venta de bebida alcoholica en una misma venta (que no de puntos por el alcohol)",
+              "DESCRIPCION": "Validar la obtenci\u00f3n de un producto selloxxo gratuito junto al correcto funcionamiento de una venta de bebida alcoholica en una misma venta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo junto a una bebida alcoholica, proporcionar los puntos de acuerdo a promoci\u00f3n",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
@@ -408,137 +447,106 @@
                      "Agregar al journal una bebida alcoholica",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
-                     "Completar venta",
-                     "Validar en ticket que s ehalla reseteado el selloxxo y que no de puntos por el acohol",
+                     "Completar venta pagando con efectivo",
+                     "Validar en ticket que se halla reseteado el selloxxo y si da puntos por el acohol de acuerdo a las promociones.",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 28,
+              "id": 27,
               "NOMBRE": "Redimir selloxxo junto a tabaco (cigarrillos)",
-              "DESCRIPCION": "Validar la redenci\u00f3n de un producto selloxxo gratuiro junto al correcto funcionamiento de una venta de tabaco en una misma venta",
+              "DESCRIPCION": "Validar la redenci\u00f3n de un producto selloxxo gratuito junto al correcto funcionamiento de una venta de tabaco en una misma venta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo y los crigarrillos no dan puntos.",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar al journal tabaco (cigarros)",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 29,
-              "NOMBRE": "Obtener dos selloxxos en la misma venta",
-              "DESCRIPCION": "Validar que se otorguen los selloxxos correspondientes",
+              "id": 28,
+              "NOMBRE": "Validar no redenci\u00f3n de m\u00e1s de un selloxxo por venta",
+              "DESCRIPCION": "Validar que no se otorguen m\u00e1s de un selloxxo en una venta",
+              "RESULTADO_GENERAL": "No da mas de un producto de selloxxo gratis por venta",
               "PASOS": [
                      "Ingresar a Xpos",
-                     "Agregar al journal producto de los selloxxo",
-                     "Presionar <Subtotalizar>",
-                     "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
-                     "Completar venta",
-                     "Validar en ticket que se hallan habilitado los dos selloxxo",
-                     "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
-       },
-       {
-              "id": 30,
-              "NOMBRE": "Redimir dos selloxxo en la mismas venta",
-              "DESCRIPCION": "Validar que se otorguen dos productos selloxxo en autom\u00e1tico",
-              "PASOS": [
-                     "Ingresar a Xpos",
-                     "Agregar al journal producto de dos selloxxo habilitados",
-                     "Se otorgara el selloxxo en autom\u00e1tico",
+                     "Intentar agregar al journal producto de dos selloxxo habilitados",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrara pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
-                     "Validar en ticket que s ehalla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
+                     "Validar en ticket que se halla reseteado el selloxxo y que se muestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 31,
+              "id": 29,
               "NOMBRE": "Redimir un selloxxo junto a un producto de Alimentos",
-              "DESCRIPCION": "Validar que se otorgue el selloxxo y un producto de 'Aliemntos' en la misma venta",
+              "DESCRIPCION": "Validar que se otorgue el selloxxo y un producto de 'Alimentos' en la misma venta",
+              "RESULTADO_GENERAL": "Se otorga el producto de selloxxo gratis junto a un producto de  'Alimentos'",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de dos selloxxo habilitados",
-                     "Se otorgar\u00e1 el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar al journal un producto de 'Alimentos'",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que s ehalla resteado el selloxxo y que s emuestre el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 32,
-              "NOMBRE": "Redimir un selloxxo junto a un producto que no otorgue dinero 'coalici\u00f3n'",
-              "DESCRIPCION": "Validar que se otorgue el selloxxo gratis pero al contrario, que no otorgue del producto de venta",
+              "id": 30,
+              "NOMBRE": "Redimir un selloxxo junto a un producto excluido",
+              "DESCRIPCION": "Validar que se otorgue el selloxxo gratis pero al contrario, que no otorgue del producto de venta (producto excluido)",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo y no se acumula puntos del producto excluido",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal producto de selloxxo habilitado",
-                     "Se otorgar\u00e1 el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar al journal un producto que no otorgue dinero 'coalici\u00f3n'",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla resteado el selloxxo y que no otorgue dinero 'coalici\u00f3n' de la venta",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 33,
+              "id": 31,
               "NOMBRE": "Redimir un selloxxo junto a productos con y sin promoci\u00f3n",
               "DESCRIPCION": "Validar que se otorgue el selloxxo gratis y que acumule puntos SOLO de los productos que tengan promocion (den dinero 'coalici\u00f3n')",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo, se acumula dinero 'coalici\u00f3n' de los productos con promocion, no se acumula dinero 'coalici\u00f3n' de los productos excluidos",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal prpducto de selloxxo habilitado",
-                     "Se otorgar\u00e1 el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar al journal tatno producto que no otorgue dinero 'coalici\u00f3n' y productos que si den",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo y el dinero 'coalici\u00f3n' de los productos que lo dan",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 34,
-              "NOMBRE": "Obtener cinco selloxxos en la misma venta",
-              "DESCRIPCION": "Validar que se habiliten los selloxxos correspondientes",
-              "PASOS": [
-                     "Ingresar a Xpos",
-                     "Agregar al journal producto para habilitar cinco selloxxos",
-                     "Presionar <Subtotalizar>",
-                     "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
-                     "Completar venta",
-                     "Validar en ticket que se hallan habilitado los cinco selloxxos diferentes",
-                     "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
-       },
-       {
-              "id": 35,
-              "NOMBRE": "Redimir cinco selloxxo en la misma venta",
-              "DESCRIPCION": "Validar que se otorgue los cinco productos selloxxos gratis en autom\u00e1tico",
-              "PASOS": [
-                     "Ingresar a Xpos",
-                     "Agregar al journal producto de cinco selloxxos habilitados",
-                     "Se otorgaran los selloxxos en autom\u00e1tico",
-                     "Presionar <Subtotalizar>",
-                     "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
-                     "Completar venta",
-                     "Validar en ticket que se hallan resteado los cinco selloxxos diferentes",
-                     "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
-       },
-       {
-              "id": 36,
+              "id": 32,
               "NOMBRE": "Realizar compra con dos productos selloxxo antes de completar selloxxo",
-              "DESCRIPCION": "Comprar dos productos en la misma venta pertenecientes al mismo selloxxo cuando falta un producto para completarResultado: A como funciona no podra proporcionar un producto gratis, los productos serian una venta.",
+              "DESCRIPCION": "Comprar dos productos en la misma venta pertenecientes al mismo selloxxo cuando falta un producto para completar",
+              "RESULTADO_GENERAL": "A como funciona no podra proporcionar un producto gratis, los productos seran una venta.",
               "PASOS": [
                      "Ingresar a Xpos",
                      "Agregar al journal 2 productos del mismo selloxxo faltando 1 para habilitar selloxxo (no se otorgar\u00e1 el selloxxo)",
@@ -547,43 +555,49 @@
                      "Completar venta",
                      "Validar en ticket que se hallan obtenido el selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 37,
-              "NOMBRE": "Realizasr compra con dos productos selloxxos con selloxxo completado",
+              "id": 33,
+              "NOMBRE": "Realizar compra con dos productos selloxxos con selloxxo completado",
               "DESCRIPCION": "Comprar dos productos en la misma venta pertenecientes al mismo selloxxos una vez completado",
+              "RESULTADO_GENERAL": "Uno de los productos selloxxo se otorga gratis y el otro acumula puntos por venta. Se resetea el selloxxo.",
               "PASOS": [
                      "Ingresar a Xpos e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar al journal 2 productos del mismo selloxxo habilitado",
-                     "Se otorgar\u00e1 los selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'NO'",
                      "Completar venta",
                      "Validar en ticket que se halla reseteado el selloxxo.",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 38,
+              "id": 34,
               "NOMBRE": "Venta de un selloxxo, redenci\u00f3n y acumulaci\u00f3n en la misma venta",
-              "DESCRIPCION": "Realizar la venta de un selloxxo, redenci\u00f3n y acumulaci\u00f3n en la misma venta",
+              "DESCRIPCION": "Realizar la redenci\u00f3n de un selloxxo, redenci\u00f3n dinero 'coalicion' y acumulaci\u00f3n en la misma venta",
+              "RESULTADO_GENERAL": "Se otorga el selloxxo gratis, se otorga producto gratis por redenci\u00f3n de dinero coalici\u00f3n y se acumulan puntos por los productos promocionales de la redenci\u00f3n.",
               "PASOS": [
                      "Ingresar a Xpos e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar al journal un producto de selloxxo habilitado",
-                     "Se otorgar\u00e1 el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Agregar al journal productos que otorguen dinero 'coalici\u00f3n' (m\u00ednimo 2)",
                      "Presionar <Subtotalizar>",
                      "Se mostrar\u00e1 pantalla si desea usar dinero 'coalici\u00f3n' y dar a 'SI'",
                      "Completar venta pagando con dinero 'coalici\u00f3n'",
                      "Validar en ticket que se halla reseteado el selloxxo y el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 39,
+              "id": 35,
               "NOMBRE": "Venta de un selloxxo, redenci\u00f3n y acumulaci\u00f3n en la misma venta con pago mixto",
               "DESCRIPCION": "Realizasr la venta de un selloxxo, redenci\u00f3n y acumulaci\u00f3n en la misma venta con pago mixto (dinero 'coalici\u00f3n' y efectivo)",
+              "RESULTADO_GENERAL": "Se otorga el selloxxo gratis, se otorga producto gratis por redenci\u00f3n de dinero coalici\u00f3n y se acumulan puntos por productos promocionales pagando la redenci\u00f3n con dinero 'coalici\u00f3n' y los productos con efectivo.",
               "PASOS": [
                      "Ingresar a Xpos e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar al journal un producto de selloxxo habilitado",
@@ -592,12 +606,14 @@
                      "Completar venta pagando una parte con dinero 'coalici\u00f3n' y la otra con efectivo",
                      "Validar en ticket que se halla reseteado el selloxxo y el nuevo balance de puntos",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 40,
+              "id": 36,
               "NOMBRE": "Completar un selloxxo en una sola venta",
               "DESCRIPCION": "Realizar una venta que complete un selloxxo que inicialemente este con 0 productos comprados, es decir, si el selloxxo requiere de 5 productos, comprar esos 5 productos para que se otorgue el selloxxo",
+              "RESULTADO_GENERAL": "Se habilita el selloxxo mostrandose en el ticket.",
               "PASOS": [
                      "Ingresar a Xpos e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar al journal los productos para completar un selloxxo",
@@ -606,41 +622,47 @@
                      "Completar venta",
                      "Validar en ticket que se halla obtenido selloxxo",
                      "Validar actualizaci\u00f3n de selloxxos en Gravty"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 41,
+              "id": 37,
               "NOMBRE": "Interrupci\u00f3n de redenci\u00f3n de selloxxo por internet",
               "DESCRIPCION": "Validar que en mitad de flujo de redenci\u00f3n selloxxos los procesos se cancelen al desconectar el internet",
+              "RESULTADO_GENERAL": "Se valida que el balance no se halla alterado y que la compra no se completara.",
               "PASOS": [
                      "Ingresar a XPOS e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar un producto de selloxxo habilitado",
-                     "Se agregar\u00e1 el producto en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Desconectar cable ethernet o conexion a internet",
                      "Validar que se cancele el flujo",
                      "Validar en Gravty que no se halla modificado el balance ni los selloxxos"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 42,
+              "id": 38,
               "NOMBRE": "Interrupci\u00f3n de redenci\u00f3n selloxxo por XPOS",
               "DESCRIPCION": "Validar que en mitad de un flujo de redenci\u00f3n selloxxo los procesos se cancelen despues de cerrar o seshabilitar XPOS",
+              "RESULTADO_GENERAL": "Se valida que el balance no se halla alterado y que la compra no se completara.",
               "PASOS": [
                      "Ingresar a XPOS e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar al journal un producto de selloxxo habilitado",
-                     "Se otorgar\u00e1 el selloxxo en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Cerrar XPOS",
                      "Validar en Gravty que no se halla reseteado el selloxxo"
-              ]
+              ],
+              "RESULTADO": []
        },
        {
-              "id": 43,
+              "id": 39,
               "NOMBRE": "Redenci\u00f3n de sellloxxo junto a fallo de dep\u00f3sito",
               "DESCRIPCION": "Comprobar que se complete una redenci\u00f3n junto a un dep\u00f3sito fallado por vencimiento de tiempo de espera.",
+              "RESULTADO_GENERAL": "Validar que la operaciones del consumo de selloxxo se completara adecuadamente aunque el dep\u00f3sito resultara fallado.",
               "PASOS": [
                      "Ingresar a XPOS e identificarse como usuario 'coalici\u00f3n'",
                      "Agregar un producto de un selloxxo habilitado",
-                     "Se dar\u00e1 gratos en autom\u00e1tico",
+                     "Aceptar el producto gratis de selloxxo",
                      "Seleccionar <Financieros> en el journal",
                      "Seleecionar Dep\u00f3sito (corresponsalias) > Dep\u00f3sito de tarjeta",
                      "Iniciar sesi\u00f3n cajeros (contrase\u00f1a: Comercio.1)",
@@ -650,6 +672,85 @@
                      "Finalizar venta",
                      "Validar que en ticket se muestre correctamente el selloxxo",
                      "Validar en Gravty la informaci\u00f3n correspondiente"
-              ]
+              ],
+              "RESULTADO": []
+       },
+       {
+              "id": 40,
+              "NOMBRE": "Validar que no se elimine un selloxxo del journal",
+              "DESCRIPCION": "Agregar al journla un selloxxo para despues tratar de eliminarlo, el deber ser del flujo es que no te permita eliminar el selloxxo",
+              "RESULTADO_GENERAL": "Comprobar que no se pueda eliminar un selloxxo del journal",
+              "PASOS": [
+                     "Ingresar a Xpos e identicarse como usuario 'Coalici\u00f3n'",
+                     "Agregar al journal un producto de selloxxo habilitado",
+                     "Aceptar el beneficio del selloxxo",
+                     "Intentar eliminar el selloxxo del journal y validar que no lo permita",
+                     "Completar consumo de selloxxo",
+                     "Validar en Gravty que no se halla modificado la informaci\u00f3n relacionada a los selloxxos"
+              ],
+              "RESULTADO": []
+       },
+       {
+              "id": 41,
+              "NOMBRE": "Validar el maximo de redenciones selloxxo",
+              "DESCRIPCION": "Llegar el maximo de redenciones selloxxo (8 redenciones por dia) y validar que funcione correctamente",
+              "RESULTADO_GENERAL": "Solo permite el consumo de 8 selloxxos por dia.",
+              "PASOS": [
+                     "Ingresar a XPOS e iniciar sesion como usuario 'Coalici\u00f3n'",
+                     "Seleccionar un productos de selloxxo habilitado",
+                     "Aceptar el producto gratis de selloxxo",
+                     "Completar venta",
+                     "Realizar varias redenciones de selloxxo para comprobar que las redenciones no pasen del limite por dia, es decir, 8 diarias.",
+                     "Verificar informacion en Gravty"
+              ],
+              "RESULTADO": []
+       },
+       {
+              "id": 42,
+              "NOMBRE": "Validar el punto m\u00e1ximo de redenciones selloxxo con redenciones con dinero 'coalici\u00f3n'",
+              "DESCRIPCION": "Validar que funcione correctamente el m\u00e1ximo de redenciones selloxxo mezclandolos junto a redenciones con dinero 'coalici\u00f3n'",
+              "RESULTADO_GENERAL": "En duda, ya que no se sabe si el limitante de redenciones valen para las dos tipos de redenciones o solo para selloxxo ya que redencion de puntos pasa a redencion dinero 'coalici\u00f3n' como m\u00e9todo de pago.",
+              "PASOS": [
+                     "Ingresar a XPOS e iniciar sesion como usuario 'Coalici\u00f3n'",
+                     "Agregar al journal un producto de selloxxo habilitado",
+                     "Aceptar el producto gratis de selloxxo",
+                     "Completar venta",
+                     "Realizar varias redenciones de selloxxo y redenciones con dinero 'coalici\u00f3n' para comprobar que las redenciones no pasen del limite por dia. (Por ejmplo, 4 selloxxo y 4 con dinero 'coalici\u00f3n')",
+                     "Verificar informacion en Gravty"
+              ],
+              "RESULTADO": []
+       },
+       {
+              "id": 43,
+              "NOMBRE": "Reclamar un selloxxo logueando al realizar la venta",
+              "DESCRIPCION": "Reclamar un selloxxo iniciando sesi\u00f3n cuando aparezca la interfaz de logueo que aparece al realizar una venta",
+              "RESULTADO_GENERAL": "Se otorga el producto gratis de selloxxo",
+              "PASOS": [
+                     "Ingresar a XPOS",
+                     "Agregar al journal un producto de un selloxxo habilitado",
+                     "Presionar <Subtotalizar>",
+                     "Iniciar sesi\u00f3n como usuario 'coalici\u00f3n' en la interfaz mostrada",
+                     "Se mostrara el aviso para reclamar el producto, dar en aceptar",
+                     "Completar venta",
+                     "Validar en el ticket la informacion del selloxxo entregado",
+                     "Validar en Gravty la informaci\u00f3n relacionada a la transacci\u00f3n"
+              ],
+              "RESULTADO": []
+       },
+       {
+              "id": 44,
+              "NOMBRE": "Reclamar un selloxxo logueando con n\u00famero de celular",
+              "DESCRIPCION": "Reclamar un selloxxo logueando con n\u00famero de celular",
+              "RESULTADO_GENERAL": "Se entrega el producto gratis de selloxxo",
+              "PASOS": [
+                     "Ingresar a XPOS",
+                     "Presionar <Oxxo Premia> / <Registro> / <Identificaci\u00f3n OXXO PREMIA> y registrarse con un numero ya registrado en 'coalici\u00f3n'",
+                     "Agregar al journal un producto con selloxxo habilitado",
+                     "Aceptar el panel donde otorga el producto gratis",
+                     "Completar compra",
+                     "Validar en ticket el reajuste de los selloxxo",
+                     "Validar en Gravty la informaci\u00f3n de la transacci\u00f3n"
+              ],
+              "RESULTADO": []
        }
 ]

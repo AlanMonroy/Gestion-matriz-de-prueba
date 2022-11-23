@@ -4,8 +4,9 @@ from tkinter import ttk,filedialog,messagebox
 from tkinter.ttk import Combobox
 from ttkthemes import ThemedTk
 import json
-from manage_data import Manage
+from api_manage_data import Manage
 from operator import itemgetter
+import os
 #from buscar_info import Buscar
 
 class Login:
@@ -22,11 +23,71 @@ class Login:
         self.menu()
         self.control_mostrar_pasos = False
         self.window.bind("<Control-g>",self.reacomodar)
+        self.window.bind("<Alt-e>",self.editar_casos)
+        self.ARCHIVO_NUEVO = False
 
+    def abrir_matriz(self):
+        ruta_programa = os.getcwd()
+        self.archivo_json = filedialog.askopenfilename(title="Abrir", initialdir = ruta_programa,filetypes = [("Archivo json","*.json")])
+        llamar_manage = Manage()
+        llamar_manage.memoria_guardar_archivo_json(self.archivo_json)
+        self.insertar_valores_tabla()
+
+    # VERIFICAR SI HAY UN ARCHIVO ABIERTO ANTERIORMENTE #
+    def verificar_archivo_configuracion(self):
+        llamar_manage = Manage() 
+        try:
+            self.archivo_json = llamar_manage.memoria_archivo_json()
+            self.insertar_valores_tabla()
+        except Exception as e:
+            print(f"Aviso: no existe ningun archivo en el historial para abrir.")
+
+    # FUNCION COMPLEMENTO DE 'CREAR_MATRIZ' PARA MANDAR EL NOMBRE DEL ARCHIVO #
+    def mandar_archivo(self,event):
+        if self.nombre_matriz.get() == '':
+            messagebox.showinfo('Error','Registrar un nombre para la matriz')
+        else:
+            llamar_manage = Manage()
+            llamar_manage.crear_json_matriz(self.nombre_matriz.get()) #Crear el json de la matriz
+            llamar_manage.memoria_guardar_archivo_json(f'matrices/{self.nombre_matriz.get()}.json') #Guardar la ruta en la
+            self.top_crear_matriz.destroy() #Destruir la interfaz para registrar nombre
+            self.insertar_valores_tabla() #Actualizar tabla
+            self.ARCHIVO_NUEVO = True
+            self.crear_casos()
+
+    # FUNCION PARA CREAR INTERFAZ PARA CREAR MATRIZ #
+    def crear_matriz(self):
+        self.top_crear_matriz=Toplevel()
+        self.top_crear_matriz.title("Nueva matriz de prueba")
+        self.top_crear_matriz.grab_set()
+        self.top_crear_matriz.transient(master=None)
+        self.top_crear_matriz.resizable(False, False)
+        self.top_crear_matriz.configure(bg = "white")#ffffff
+        #self.window.wm_attributes("-transparentcolor","#60b26c")#60b26c
+        self.top_crear_matriz.wm_attributes("-alpha",.95)
+
+        registros = Label(self.top_crear_matriz,text="Nombre de la matriz: ",bg="white",font=("Arial",12))
+        registros.grid(row=0,column=0,sticky="e")
+        self.nombre_matriz = Entry(self.top_crear_matriz,width=20,justify=CENTER,font=("Arial",12))
+        self.nombre_matriz.grid(row=0,column=1,pady=5,padx=5,sticky="w")
+        self.nombre_matriz.bind('<Return>',self.mandar_archivo)
+
+        
     def menu(self):
         style = ttk.Style()
         style.configure("Treeview")
         style.map("Treeview", background=[("selected","#38022D")])
+
+        #__________________________________Barra menu___________________________________
+        barramenu=Menu(self.window) 
+        self.window.config(menu=barramenu)
+        Archivo=Menu(barramenu,tearoff=0)
+        Ayuda=Menu(barramenu,tearoff=0)
+        barramenu.add_cascade(label="Abrir matriz",menu=Archivo)
+        barramenu.add_cascade(label="Ayuda",menu=Ayuda)
+        #Submenus
+        Archivo.add_command(label="Abrir matriz",command=self.abrir_matriz)
+        Archivo.add_command(label="Crear nueva matriz",command=self.crear_matriz)
 
         registros = Label(self.window,text="Casos de prueba: ",fg=self.letra,bg=self.fondo,font=("Arial",12))
         registros.grid(row=0,column=0,sticky="e")
@@ -84,7 +145,7 @@ class Login:
         creador = Label(self.window,text="Creado por Roberto Alan Rodriguez Monroy",fg=self.letra,bg=self.fondo,font=("Arial",8))
         creador.grid(row=3,column=0,padx=10,columnspan=2)
 
-        self.insertar_valores_tabla()
+        self.verificar_archivo_configuracion()
 
     def buscar(self, event): #Buscador de elementos en la DB
         llamar_manage=Manage()
@@ -102,6 +163,7 @@ class Login:
         # INSERTAR LOS DATOS EN LA TABLA #
         for i in data:
             self.tabla.insert(parent="",index="end",text="",values=(i['id'],i['NOMBRE'],i['DESCRIPCION']))
+    
     # MOSTRAR E INSERTAR PASOS #
     def insertar_pasos(self, event=str()):
         if self.control_mostrar_pasos == True:
@@ -171,32 +233,51 @@ class Login:
         registros.grid(row=0,column=0,sticky="e")
         self.numero_registro = Entry(self.top,width=10,justify=CENTER,font=("Arial",12))
         self.numero_registro.grid(row=0,column=1,pady=5,sticky="w")
-        numero_registro = self.CANTIDAD_REGISTROS_0 + 1
+        if self.ARCHIVO_NUEVO:
+            numero_registro = 1
+            self.ARCHIVO_NUEVO = False
+        else:
+            numero_registro = self.CANTIDAD_REGISTROS_0 + 1
         self.numero_registro.insert(END,numero_registro)
         self.numero_registro.configure(state="disabled")
         
         self.registrar_nombre = ttk.Entry(self.top,width=40,font=("Times New Roman", 12))
         self.registrar_nombre.grid(row=1,column=0,padx=10,pady=5,columnspan=2)
-        self.registrar_nombre.bind("<Key>",self.mover_registro)
+        #self.registrar_nombre.bind("<Key>",self.mover_registro)
 
         self.registrar_descripcion = Text(self.top,width=50,height=5,border=2,wrap="word",font=("Times New Roman", 12))
-        self.registrar_descripcion.grid(row=2,column=0,padx=20,pady=5,columnspan=2)
-        self.registrar_descripcion.bind("<Key>",self.mover_registro)
-
+        self.registrar_descripcion.grid(row=2,column=0,padx=20,pady=5)
         self.scrollvert0=Scrollbar(self.top,command=self.registrar_descripcion.yview)
         self.scrollvert0.place(in_=self.registrar_descripcion,relx=1, relheight=1, bordermode="inside")
         self.registrar_descripcion.config(yscrollcommand=self.scrollvert0.set)
 
+        self.registrar_resultado_general = Text(self.top,width=50,height=5,border=2,wrap="word",font=("Times New Roman", 12))
+        self.registrar_resultado_general.grid(row=2,column=1,padx=20,pady=5)
+        #self.registrar_descripcion.bind("<Key>",self.mover_registro)
+
+        self.scrollvert0_1=Scrollbar(self.top,command=self.registrar_resultado_general.yview)
+        self.scrollvert0_1.place(in_=self.registrar_resultado_general,relx=1, relheight=1, bordermode="inside")
+        self.registrar_resultado_general.config(yscrollcommand=self.scrollvert0_1.set)
+
         self.registrar_pasos = Text(self.top,width=50,height=5,border=2,wrap="word",font=("Times New Roman", 12))
-        self.registrar_pasos.grid(row=3,column=0,padx=20,pady=5,columnspan=2)
-        self.registrar_pasos.bind("<Key>",self.mover_registro)
+        self.registrar_pasos.grid(row=3,column=0,padx=20,pady=5)
+        #self.registrar_pasos.bind("<Key>",self.mover_registro)
 
         self.scrollvert1=Scrollbar(self.top,command=self.registrar_pasos.yview)
         self.scrollvert1.place(in_=self.registrar_pasos,relx=1, relheight=1, bordermode="inside")
         self.registrar_pasos.config(yscrollcommand=self.scrollvert1.set)
+
+        self.registrar_resultado = Text(self.top,width=50,height=5,border=2,wrap="word",font=("Times New Roman", 12))
+        self.registrar_resultado.grid(row=3,column=1,padx=20,pady=5)
+
+        self.scrollvert2=Scrollbar(self.top,command=self.registrar_resultado.yview)
+        self.scrollvert2.place(in_=self.registrar_resultado,relx=1, relheight=1, bordermode="inside")
+        self.registrar_resultado.config(yscrollcommand=self.scrollvert2.set)
+
         #estilo = ttk.Style()
         #estilo.configure("W.TButton", font = ('Arial', 10, 'bold'),foreground = 'black',background="white")
         #estilo.map('TButton', foreground = [('active', '!disabled', '#38022D')],background = [('active', '#38022D')])
+        
         button_editar = ttk.Button(self.top,style='W.TButton',text="Guardar",cursor="hand2",command=self.guardar_datos)
         #button_editar.place(x=200,y=250)
         button_editar.grid(row=4,column=0,pady=5,columnspan=2)
@@ -263,21 +344,34 @@ class Login:
             self.texto_nombre = StringVar()
             self.texto_nombre.set("Nombre del caso de prueba")
             self.editar_nombre = ttk.Entry(self.top,width=40,textvariable=self.texto_nombre,font=("Times New Roman", 12))
-            self.editar_nombre.grid(row=1,column=0,padx=10,pady=5)
+            self.editar_nombre.grid(row=1,column=0,padx=10,pady=5,columnspan=2)
             #self.editar_nombre.bind("<Key>",self.mover)
             self.texto_descripcion = StringVar()
             self.texto_descripcion.set("Descripción del caso de prueba")
+
             self.editar_descripcion = Text(self.top,width=50,height=5,border=2, wrap="word",font=("Times New Roman", 12))
             self.editar_descripcion.grid(row=2,column=0,padx=20,pady=5)
             self.scrollvert0=Scrollbar(self.top,command=self.editar_descripcion.yview)
             self.scrollvert0.place(in_=self.editar_descripcion,relx=1, relheight=1, bordermode="outside")
             self.editar_descripcion.config(yscrollcommand=self.scrollvert0.set)
 
+            self.editar_resultado_general = Text(self.top,width=50,height=5,border=2, wrap="word",font=("Times New Roman", 12))
+            self.editar_resultado_general.grid(row=2,column=1,padx=20,pady=5)
+            self.scrollvert0_1=Scrollbar(self.top,command=self.editar_resultado_general.yview)
+            self.scrollvert0_1.place(in_=self.editar_resultado_general,relx=1, relheight=1, bordermode="outside")
+            self.editar_resultado_general.config(yscrollcommand=self.scrollvert0_1.set)
+
             self.editar_pasos = Text(self.top,width=50,height=5,border=2,wrap="word",font=("Times New Roman", 12))
             self.editar_pasos.grid(row=3,column=0,padx=20,pady=5)
             self.scrollvert1=Scrollbar(self.top,command=self.editar_pasos.yview)
             self.scrollvert1.place(in_=self.editar_pasos,relx=1, relheight=1, bordermode="outside")
             self.editar_pasos.config(yscrollcommand=self.scrollvert1.set)
+
+            self.editar_resultados = Text(self.top,width=50,height=5,border=2,wrap="word",font=("Times New Roman", 12))
+            self.editar_resultados.grid(row=3,column=1,padx=20,pady=5)
+            self.scrollvert2=Scrollbar(self.top,command=self.editar_resultados.yview)
+            self.scrollvert2.place(in_=self.editar_resultados,relx=1, relheight=1, bordermode="outside")
+            self.editar_resultados.config(yscrollcommand=self.scrollvert2.set)
 
             self.insertar_valores_casos(values)
             estilo = ttk.Style()
@@ -289,11 +383,18 @@ class Login:
             button_editar = ttk.Button(self.top,style='W.TButton',text="Guardar",cursor="hand2",command=self.actualizar_datos)
             button_editar.grid(row=4,column=0)          #Ventana grafica para editar los casos
 
+            button_documentacion = ttk.Button(self.top,style='W.TButton',text="Crear documentación",cursor="hand2",command=self.crear_word)
+            button_documentacion.grid(row=4,column=1)          #Ventana grafica para editar los casos
+
     def guardar_datos(self, event=0):
         if self.registrar_nombre.get() == "":
             messagebox.showinfo("Error","El registro debe tener como minimo nombre")
         else:
-            diccionario = {'nombre':self.registrar_nombre.get(),'descripcion':self.registrar_descripcion.get(1.0,END),'pasos':self.registrar_pasos.get(1.0,END)}
+            diccionario = {'nombre':self.registrar_nombre.get(),
+                        'descripcion':self.registrar_descripcion.get(1.0,END),
+                        'resultado_general':self.registrar_resultado_general.get(1.0,END),
+                        'pasos':self.registrar_pasos.get(1.0,END),
+                        'resultado':self.registrar_resultado.get(1.0,END)}
             llamar_manage = Manage()
             llamar_manage.guardar_datos_json(diccionario)
             messagebox.showinfo('Completado','Registro completado')
@@ -306,10 +407,17 @@ class Login:
             self.numero_registro.configure(state="disabled")
             self.registrar_nombre.delete(0, END)
             self.registrar_descripcion.delete(1.0, END)
+            self.registrar_resultado_general.delete(1.0, END)
             self.registrar_pasos.delete(1.0, END)
+            self.registrar_resultado.delete(1.0, END)
     
     def actualizar_datos(self,event=0):
-        diccionario = {'identificador':self._valor_id,'nombre':self.editar_nombre.get(),'descripcion':self.editar_descripcion.get(1.0,END),'pasos':self.editar_pasos.get(1.0,END)}
+        diccionario = {'identificador':self._valor_id,
+                    'nombre':self.editar_nombre.get(),
+                    'descripcion':self.editar_descripcion.get(1.0,END),
+                    'resultado_general':self.editar_resultado_general.get(1.0,END),
+                    'pasos':self.editar_pasos.get(1.0,END),
+                    'resultado':self.editar_resultados.get(1.0,END)}
         llamar_manage = Manage()
         llamar_manage.actualizar_datos_json(diccionario)
         messagebox.showinfo("Completado","Caso actualizado.")
@@ -323,8 +431,21 @@ class Login:
         self.editar_descripcion.insert(END,values[2])
         llamar_manage = Manage()
         diccionario = llamar_manage.buscar_dato_json(self._valor_id)
-        for i in diccionario['PASOS']:
-            self.editar_pasos.insert(END, i + '\n')
+        try:
+            self.editar_resultado_general.insert(END,diccionario['RESULTADO_GENERAL'])
+        except Exception as e:
+            print(e)
+        try:
+            for i in diccionario['PASOS']:
+                self.editar_pasos.insert(END, i + '\n')
+        except Exception as e:
+            print(e)
+
+        try:
+            for i in diccionario['RESULTADO']:
+                self.editar_resultados.insert(END, i + '\n')
+        except Exception as e:
+            print(e)
 
     def insertar_valores_tabla(self):
         self.tabla.delete(*self.tabla.get_children())                   #Eliminar valores actuales de la tabla
@@ -332,7 +453,10 @@ class Login:
         data=llamar_manage.get_info_json()                              #Llamar funcion para recuperar los datos del json
 
         # Registrar la cantidad de registros en un entry #
-        self.CANTIDAD_REGISTROS_0=len(data)
+        try:
+            self.CANTIDAD_REGISTROS_0=len(data)
+        except Exception as e:
+            self.CANTIDAD_REGISTROS_0 = 0
         self.cantidad_registros.configure(state="normal")
         self.cantidad_registros.delete(0, END)
         self.cantidad_registros.insert(0,self.CANTIDAD_REGISTROS_0)
@@ -340,8 +464,11 @@ class Login:
         self.diccionario_informacion = data
 
         # INSERTAR LOS DATOS EN LA TABLA #
-        for i in data:
-            self.tabla.insert(parent="",index="end",text="",values=(i['id'],i['NOMBRE'],i['DESCRIPCION']))
+        try:
+            for i in data:
+                self.tabla.insert(parent="",index="end",text="",values=(i['id'],i['NOMBRE'],i['DESCRIPCION']))
+        except Exception as e:
+            print('No hay datos en la matriz')
 
     def eliminar(self):
         seleccion = self.tabla.selection()
@@ -360,6 +487,10 @@ class Login:
     def exportar_excel(self):
         llamar_manage = Manage()
         llamar_manage.exportar_excel()
+
+    def crear_word(self):
+        llamar_manage = Manage()
+        llamar_manage.crear_word(self._valor_id)
 
 if __name__ =="__main__":   
     window=ThemedTk(theme="adapta")
